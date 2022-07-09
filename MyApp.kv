@@ -1,0 +1,152 @@
+MyApp:
+
+
+
+<MyApp@ScreenManager>:
+    MenuScreen:
+    TaskScreen:
+
+
+<MenuScreen>:
+    canvas.before:
+        Rectangle:
+            size: self.size
+            source: '/bg1.jpg'
+    name: 'MenuScreen'
+    BoxLayout:
+        size: root.size
+        orientation: 'vertical'
+        RelativeLayout:
+            canvas:
+                Color:
+                    rgb: .36, .61, .84
+                Rectangle:
+                    size: self.size
+            Label:
+                text: 'Menu'
+                font_size: 50
+
+        RelativeLayout:
+            Button:
+                text: 'Профиль'
+                font_size: 30
+        RelativeLayout:
+            Button:
+                text: 'Задание'
+                font_size: 30
+                on_release: app.root.current = 'TaskScreen'
+
+<Plus_minus_bubb>:
+    Bubble:
+        size_hint: (None, None)
+        size: '60dp', '40dp'
+        pos_hint: {'center_x': .5, 'y': .32}
+        BubbleButton:
+            text: '-'
+            on_press: root.on_bubb_click()
+        BubbleButton:
+            text: '+'
+            on_press: root.on_bubb_click()
+
+<TaskScreen>:
+    name: 'TaskScreen'
+    BoxLayout:
+        canvas.before:
+            Rectangle:
+                size: self.size
+                source: 'images/168756-kosmos-atmosfera-planeta-mir-svet-1080x1920.jpg'
+        size: root.size
+        orientation: 'vertical'
+
+        BoxLayout:
+            size_hint: 1, .2
+            RelativeLayout
+
+                Button:
+                    text: 'Меню'
+
+                    size_hint: 0.2, 0.2
+                    pos_hint: {'center_x' : 0.1, 'center_y' : 0.75 }
+                    on_release: app.root.current = 'MenuScreen'
+
+        BoxLayout:
+            size_hint: 1, .6
+            RelativeLayout
+
+                BoxLayout
+                    orientation: 'vertical'
+                    Label:
+                        text: root.my_text
+                        font_size: "40dp"
+                        color: 1, .5, 1, 1
+                    Label:
+                        text: root.my_task
+                        font_size: "40dp"
+                        color: 1, .5, 1, 1
+                    Label:
+                        text: root.my_time
+                        font_size: "40dp"
+                        color: 1, .5, 1, 1
+
+#                    GridLayout:
+#                        cols: 3
+#                        spacing: 25
+#                        BubbleButton:
+#                           id: '1'
+#                            text: 'фкр'
+#                            on_release: root.show_bubble()
+#
+#                        BubbleButton:
+#                            id: '2'
+#                            text: 'рт'
+#                            on_release: root.show_bubble(self)
+#
+#                        BubbleButton:
+#                            text: 'коп1'
+#                            on_release: root.show_bubble(self)
+#
+#                        BubbleButton:
+#                            text: 'коп2'
+#                            on_release: root.show_bubble(self)
+#
+#                        BubbleButton:
+#                            text: 'коп5'
+#                            on_release: root.show_bubble(self)
+
+#                        BubbleButton:
+#                            text: 'таймер'
+#                            on_release:
+
+        BoxLayout:
+            size_hint: 1, .2
+            RelativeLayout:
+
+
+                AnchorLayout:
+
+                    size: '40dp', '20dp'
+                    BoxLayout:
+                        size_hint: .2, .2
+                        Button:
+                            text: 'Начать'
+                            background_color: 0, 1, 0, 1
+                            pos_hint: {'center_x' : .25, 'center_y' : .5}
+                            on_press: root.on_button_click()
+                        Button:
+                            id: button
+                            text: 'Таймер'
+                            background_color: 0, 1, 0, 1
+                            pos_hint: {'center_x' : .75, 'center_y' : .5}
+                            on_press: root.timer(root.my_time)
+
+
+<plus_minus_bubb2>:
+    size_hint: None, None
+    size: '160dp', '120dp'
+    pos_hint: {'center_x': .5, 'y': .6}
+    BubbleButton:
+        text: '-'
+    BubbleButton:
+        text: '+'
+    BubbleButton:
+        text: 'timer'
