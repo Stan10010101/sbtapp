@@ -10,8 +10,7 @@ from kivy.uix.screenmanager import Screen
 from random import choices
 from random import randint
 from kivy.clock import Clock
-import sys
-import datetime
+
 
 
 class MyApp(App):
@@ -24,14 +23,14 @@ class MenuScreen(Screen):
 
 
 # класс страницы заданий
-class Plus_minus_bubb(Bubble):
+#class Plus_minus_bubb(Bubble):
 
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
+#    def __init__(self, **kwargs):
+#        super().__init__(**kwargs)
 
     # функция нажатия на кнопки бабла
-    def on_bubb_click(self):
-        print("Bubb clicked")
+#    def on_bubb_click(self):
+#        print("Bubb clicked")
 
 
 class TaskScreen(Screen):
@@ -53,7 +52,15 @@ class TaskScreen(Screen):
                 yield (i)
             my_time = 0
 
+    def on_start(self):
+        self.function_interval = Clock.schedule_interval(self.update_label, 1)
+        Clock.schedule_once(self.stop_interval, int(self.ids.time.text)+1)
 
+    def update_label(self, *args):
+        self.ids.time.text = str(int(self.ids.time.text) - 1)
+
+    def stop_interval(self, *args):
+        self.function_interval.cancel()
 
 
     # функция нажатия на кнопку "Начать"
@@ -71,9 +78,11 @@ class TaskScreen(Screen):
         self.my_task = str(self.task)
         self.my_time = str(self.time)
 
+
+
     # создаем бабл
-    def show_bubble(self):
-        self.add_widget(Plus_minus_bubb())
+#    def show_bubble(self):
+#        self.add_widget(Plus_minus_bubb())
 
 
 # To DO:

@@ -84,6 +84,7 @@ MyApp:
                         font_size: "40dp"
                         color: 1, .5, 1, 1
                     Label:
+                        id: time
                         text: root.my_time
                         font_size: "40dp"
                         color: 1, .5, 1, 1
@@ -131,13 +132,13 @@ MyApp:
                             text: 'Начать'
                             background_color: 0, 1, 0, 1
                             pos_hint: {'center_x' : .25, 'center_y' : .5}
-                            on_press: root.on_button_click()
+                            on_release: root.on_button_click()
                         Button:
                             id: button
                             text: 'Таймер'
                             background_color: 0, 1, 0, 1
                             pos_hint: {'center_x' : .75, 'center_y' : .5}
-                            on_press: root.timer(root.my_time)
+                            on_release: root.on_start()
 
 
 <plus_minus_bubb2>:
