@@ -121,23 +121,23 @@ MyApp:
         BoxLayout:
             size_hint: 1, .2
             RelativeLayout:
-
-
                 AnchorLayout:
 
                     size: '40dp', '20dp'
-                    BoxLayout:
-                        size_hint: .2, .2
+                    RelativeLayout:
+                        size_hint: 1, .2
                         Button:
                             text: 'Начать'
                             background_color: 0, 1, 0, 1
                             pos_hint: {'center_x' : .25, 'center_y' : .5}
+                            size_hint: 0.2, 0.2
                             on_release: root.on_button_click()
                         Button:
                             id: button
                             text: 'Таймер'
                             background_color: 0, 1, 0, 1
                             pos_hint: {'center_x' : .75, 'center_y' : .5}
+                            size_hint: 0.2, 0.2
                             on_release: root.on_start()
 
 
