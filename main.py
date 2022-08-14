@@ -1,19 +1,12 @@
-from kivy.app import App
-from kivy.metrics import dp
-from kivy.properties import BooleanProperty, StringProperty, NumericProperty
-from kivy.uix.bubble import Bubble, BubbleButton
-from kivy.uix.button import Button
-from kivy.uix.floatlayout import FloatLayout
-from kivy.uix.gridlayout import GridLayout
-from kivy.uix.label import Label
-from kivy.uix.screenmanager import Screen
-from random import choices
 from random import randint
+
+from kivy.app import App
 from kivy.clock import Clock
+from kivy.properties import StringProperty
+from kivy.uix.screenmanager import Screen
 
 
-
-class MyApp(App):
+class main(App):
     pass
 
 
@@ -23,12 +16,12 @@ class MenuScreen(Screen):
 
 
 # класс страницы заданий
-#class Plus_minus_bubb(Bubble):
+# class Plus_minus_bubb(Bubble):
 
 #    def __init__(self, **kwargs):
 #        super().__init__(**kwargs)
 
-    # функция нажатия на кнопки бабла
+# функция нажатия на кнопки бабла
 #    def on_bubb_click(self):
 #        print("Bubb clicked")
 
@@ -37,7 +30,6 @@ class TaskScreen(Screen):
     my_text = StringProperty('Ветка')
     my_task = StringProperty('Задания')
     my_time = StringProperty('0')
-
 
     # конструктор класса
     def __init__(self, **kwargs):
@@ -54,14 +46,13 @@ class TaskScreen(Screen):
 
     def on_start(self):
         self.function_interval = Clock.schedule_interval(self.update_label, 1)
-        Clock.schedule_once(self.stop_interval, int(self.ids.time.text)+1)
+        Clock.schedule_once(self.stop_interval, int(self.ids.time.text) + 1)
 
     def update_label(self, *args):
         self.ids.time.text = str(int(self.ids.time.text) - 1)
 
     def stop_interval(self, *args):
         self.function_interval.cancel()
-
 
     # функция нажатия на кнопку "Начать"
     def on_button_click(self):
@@ -78,9 +69,9 @@ class TaskScreen(Screen):
         self.my_task = str(self.task)
         self.my_time = str(self.time)
 
-
-
     # создаем бабл
+
+
 #    def show_bubble(self):
 #        self.add_widget(Plus_minus_bubb())
 
@@ -100,4 +91,4 @@ class TaskScreen(Screen):
 
 
 if __name__ == '__main__':
-    MyApp().run()
+    main().run()
